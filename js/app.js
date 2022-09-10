@@ -7,9 +7,9 @@ const getInputFieldValueById = id => {
 const sendData = () => {
     // get user data
     const userEmail = getInputFieldValueById('user__email');
-    const userPassword = getInputFieldValueById('user__password');
+    const userName = getInputFieldValueById('user__name');
     // console.log(userEmail, userPassword);
-    setDataToLocalStorage(userEmail, userPassword)
+    setDataToLocalStorage(userEmail, userName)
 }
 
 const getDataFromLocalStorage = () => {
@@ -32,14 +32,14 @@ const getDataFromLocalStorage = () => {
 // }
 
 // array of objects way
-const setDataToLocalStorage = (email, password) => {
+const setDataToLocalStorage = (email, userName) => {
     const userData = [];
     const userInfo = getDataFromLocalStorage();
 
     if (!userInfo) {
         userData.push({
             email: email,
-            password: password
+            userName: userName
         })
         localStorage.setItem('user-info', JSON.stringify(userData));
         displayInfo();
@@ -48,7 +48,7 @@ const setDataToLocalStorage = (email, password) => {
             ...userInfo,
             {
             email: email,
-            password: password
+            userName: userName
             })
         localStorage.setItem('user-info', JSON.stringify(userData));
         displayInfo();
@@ -69,7 +69,7 @@ const displayInfo = () => {
             <div class="flex items-center justify-between p-4 text-green-700 border rounded border-green-900/10 bg-green-50"
                 role="alert">
                 <strong class="text-sm font-medium">${user.email}</strong>
-                <strong class="text-sm font-medium">${user.password}</strong>
+                <strong class="text-sm font-medium">${user.userName}</strong>
 
                 <button onclick="deleteItem('${user.email}')" class="opacity-90" type="button">
                     <span class="sr-only"> Close </span>
