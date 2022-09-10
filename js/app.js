@@ -9,6 +9,11 @@ const sendData = () => {
     const userEmail = getInputFieldValueById('user__email');
     const userName = getInputFieldValueById('user__name');
     // console.log(userEmail, userPassword);
+    if (userEmail === '' || userName === '') {
+        alert('Please input valid data');
+        return;
+    }
+
     setDataToLocalStorage(userEmail, userName)
 }
 
